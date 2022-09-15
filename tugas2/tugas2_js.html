@@ -74,11 +74,11 @@
 					let jabatan, agama, gapok, tunjab, tunkes, gator, zakat, takeHome, warna;
 
 					for (let i = 1; i <= 100; i++) {
-						if (i <= 25) {
+						if (i <= 25 && i > 0) {
 							jabatan = "Manager"
-						} else if (i <= 50) {
+						} else if (i <= 50 && i > 25) {
 							jabatan = "Asisten Manager"
-						} else if (i <= 75) {
+						} else if (i <= 75 && i > 50) {
 							jabatan = "Supervisor"
 						} else {
 							jabatan = "Staff"
