@@ -59,19 +59,7 @@
         crossorigin="anonymous"></script>
     <script>
         let tampil = document.querySelector('#tampil'),
-            dataBaru = {},
-            data = [
-                { lokasi: "Aceh", skala: 5 },
-                { lokasi: "Palu", skala: 7 },
-                { lokasi: "Jakarta", skala: 7 },
-                { lokasi: "Cirebon", skala: 3 },
-                { lokasi: "Semarang", skala: 2 },
-                { lokasi: "Bandung", skala: 4 },
-                { lokasi: "Surabaya", skala: 6 },
-                { lokasi: "Medan", skala: 3 },
-                { lokasi: "Lampung", skala: 9 },
-                { lokasi: "Sampit", skala: 10 }
-            ];
+            no = 1;
         class Gempa {
             constructor(lokasi, skala) {
                 this.lokasi = lokasi
@@ -85,30 +73,33 @@
                 return this.dampak = "Bangunan roboh dan berpotensi tsunami";
             }
 
-            tambahGempa() {
-                const no = dataBaru.no ? dataBaru.no + 1 : 1;
-                return {
-                    no: no,
-                    lokasi: this.lokasi,
-                    skala: this.skala,
-                    dampak: this.setDampak(),
-                }
-            }
             infoGempa() {
                 tampil.innerHTML += `
-                    <tr>
-                        <td>${dataBaru.no}</td>
-                        <td>${dataBaru.lokasi}</td>
-                        <td>${dataBaru.skala}</td>
-                        <td>${dataBaru.dampak}</td>
-                    </tr>
+                <tr>
+                    <td>${no++}</td>
+                    <td>${this.lokasi}</td>
+                    <td>${this.skala}</td>
+                    <td>${this.setDampak()}</td>
+                </tr>
                 `;
             }
         }
 
+        const data = [
+            { lokasi: "Aceh", skala: 5 },
+            { lokasi: "Palu", skala: 7 },
+            { lokasi: "Jakarta", skala: 1 },
+            { lokasi: "Cirebon", skala: 3 },
+            { lokasi: "Semarang", skala: 2 },
+            { lokasi: "Bandung", skala: 5 },
+            { lokasi: "Surabaya", skala: 2 },
+            { lokasi: "Medan", skala: 3 },
+            { lokasi: "Lampung", skala: 9 },
+            { lokasi: "Sampit", skala: 5 }
+        ];
+        
         for (const item of data) {
             const gempa = new Gempa(item.lokasi, item.skala);
-            dataBaru = gempa.tambahGempa();
             gempa.infoGempa();
         }
 
@@ -117,8 +108,8 @@
                 lokasi = form.lokasi.value,
                 skala = form.skala.value,
                 gempa = new Gempa(lokasi, skala);
-            dataBaru = gempa.tambahGempa();
             gempa.infoGempa();
+            data.push({ lokasi: lokasi, skala: skala })
         }
     </script>
 </body>
