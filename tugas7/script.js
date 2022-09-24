@@ -48,7 +48,6 @@ $(document).ready(function () {
 	const modal = new bootstrap.Modal('#mymodal');
 	$(".card").each(function () {
 		$(this).click(function () {
-			$('#sound').remove()
 			const hewan = $(this).data('nama');
 			$('#nameChar').html(hewan.toUpperCase());
 			$('#audio').append(`<audio autoplay id="sound" src="assets/audio/${hewan}.mp3"></audio>`);
