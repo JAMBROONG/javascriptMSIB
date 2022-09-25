@@ -45,7 +45,7 @@ $(document).ready(function () {
 		}
 	}
 
-	const modal = new bootstrap.Modal('#mymodal');
+	const modal = new bootstrap.Modal('#modalHewan');
 	$(".card").each(function () {
 		$(this).click(function () {
 			const hewan = $(this).data('nama');
@@ -54,7 +54,7 @@ $(document).ready(function () {
 			$('#gambar').attr({ src: `assets/img/${hewan}.jpg` });
 			modal.show()
 		});
-		$('#mymodal').on('hidden.bs.modal', function () {
+		$('#modalHewan').on('hidden.bs.modal', function () {
 			$('#sound').remove();
 		});
 	});
